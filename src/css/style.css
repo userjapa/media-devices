@@ -1,0 +1,35 @@
+@import url('./color.css');
+@import url('./flex.css');
+@import url('./font.css');
+@import url('./spacing.css');
+
+header, footer {
+  height: calc(100px - 50px);
+  background-color: var(--secondary);
+}
+
+header h1 {
+  color: var(--primary);
+  font-size: 24px;
+}
+
+footer a {
+  cursor: pointer;
+  color: var(--primary);
+  text-decoration: none;
+  outline: none;
+}
+footer a:hover  { text-decoration: none; opacity: .75; }
+footer a:active { text-decoration: none; }
+footer a:focus  { text-decoration: none; }
+
+section .video video {
+  border: 2px solid var(--secondary);
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  box-shadow: 0px 0px 15px 5px #DDD;
+}
+
+section form.form select { height: 100%; }
+section form.form button { height: 23px; }

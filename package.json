@@ -1,0 +1,16 @@
+{
+  "name": "media-devices",
+  "version": "1.0.0",
+  "description": "Browser Media Devices",
+  "main": "src/js/media-device.js",
+  "repository": "https://github.com/usuarioJapa/media-devices.git",
+  "scripts": {
+    "serve": "lr-http-server"
+  },
+  "author": "userJapa <willian.hsimabukuro@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "lr-http-server": "^0.1.5"
+  }
+}

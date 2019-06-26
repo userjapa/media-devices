@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>Browser Media Devices</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/src/css/reset.css">
+    <link rel="stylesheet" href="/src/css/style.css">
+  </head>
+  <body class="container column">
+    <header class="p-25 container align-items-center">
+      <h1>Browser Media Device API</h1>
+    </header>
+
+    <section class="flex container column p-10">
+      <div class="flex video container justify-center">
+        <video id="video" class="mx-10 my-15" poster="https://us.vuejs.org/_nuxt/img/449595b.png"></video>
+      </div>
+      <div class="flex">
+        <form id="media-form" class="form container justify-center wrap">
+          <div class="container justify-start column mt-10">
+            <label for="audio">Audio</label>
+            <input class="flex align-self-center ml-15" id="audio" type="checkbox" name="audio">
+          </div>
+          <div class="container column ml-10 mt-10">
+            <label for="media">Device</label>
+            <select id="media" name="media" required>
+              <option value="" selecte>Selecione um dispositivo de midia</option>
+              <option value="video">Video</option>
+              <option value="display">Display</option>
+            </select>
+          </div>
+          <div class="container align-items-end ml-10 mt-10">
+            <button type="reset">Clear</button>
+          </div>
+          <div class="container align-items-end ml-10 mt-10">
+            <button type="submit">Get Media</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="p-25 container align-items-center justify-end">
+      <a href="https://github.com/usuarioJapa" target="_blank">user<strong>Japa</strong></a>
+    </footer>
+    <script async src="/src/js/media-device.js"></script>
+    <script src="/src/js/index.js"></script>
+  </body>
+</html>
