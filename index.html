@@ -16,20 +16,22 @@
       <h1>Browser Media Device API</h1>
     </header>
 
-    <section class="flex container column p-10">
+    <section class="flex container column p-25">
       <div class="flex video container justify-center">
         <video id="video" class="mx-10 my-15" poster="https://us.vuejs.org/_nuxt/img/449595b.png"></video>
+        <audio id="audio" class="mx-10 my-15"></audio>
       </div>
       <div class="flex">
         <form id="media-form" class="form container justify-center wrap">
           <div class="container justify-start column mt-10">
             <label for="audio">Audio</label>
-            <input class="flex align-self-center ml-15" id="audio" type="checkbox" name="audio">
+            <input class="flex align-self-center ml-15" id="audio" type="checkbox" name="audio" checked>
           </div>
           <div class="container column ml-10 mt-10">
             <label for="media">Device</label>
             <select id="media" name="media" required>
               <option value="" selecte>Selecione um dispositivo de midia</option>
+              <option value="audio">Audio</option>
               <option value="video">Video</option>
               <option value="display">Display</option>
             </select>

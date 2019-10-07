@@ -9,12 +9,29 @@
 
     try {
       const availableMedia = await browserMediaDevices.enumerateDevices()
-      console.log(browserMediaDevices);
 
       class BrowserMediaDevice {
 
         constructor () {
           this.availableMedia = availableMedia
+
+          this.audio_constrains = {
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 44100
+          }
+
+          this.video_constrains = {
+            width: { min: 640, ideal: 1920, max: 3840 },
+            height: { min: 360, ideal: 1080, max: 2160 },
+            aspectRatio: 1.777777778,
+            frameRate: { min: 30, max: 60 }
+            // facingMode: { exact: 'user | environment | left | right' }
+          }
+
+          this.display_constrains = {
+            cursor: ['motion', 'always']
+          }
         }
 
         get media () {
@@ -33,22 +50,50 @@
           return this.availableMedia.filter(m => m.kind === 'videoinput')
         }
 
-        getMedia (hasAudio) {
+        getAudio () {
           return new Promise(async (resolve, reject) => {
             try {
-              const stream = await browserMediaDevices.getUserMedia({ audio: hasAudio, video: true })
+              const constrains = {
+                audio: this.audio_constrains,
+                video: false
+              }
+
+              const stream = await browserMediaDevices.getUserMedia(constrains)
+
               resolve(stream)
             } catch (error) {
-              console.log(error);
               reject(error)
             }
           })
         }
 
-        getDisplay (hasAudio) {
+        getVideo (hasAudio = true) {
           return new Promise(async (resolve, reject) => {
             try {
-              const stream = await browserMediaDevices.getDisplayMedia({ audio: hasAudio, video: true })
+              const constrains = {
+                audio: hasAudio ? this.audio_constrains : false,
+                video: this.video_constrains
+              }
+
+              const stream = await browserMediaDevices.getUserMedia(constrains)
+
+              resolve(stream)
+            } catch (error) {
+              reject(error)
+            }
+          })
+        }
+
+        getDisplay (hasAudio = true) {
+          return new Promise(async (resolve, reject) => {
+            try {
+              const constrains = {
+                audio: hasAudio ? this.audio_constrains : false,
+                video: this.display_constrains
+              }
+
+              const stream = await browserMediaDevices.getDisplayMedia(constrains)
+
               resolve(stream)
             } catch (error) {
               reject(error)

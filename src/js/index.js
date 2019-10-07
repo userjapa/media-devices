@@ -1,10 +1,12 @@
 const form  = document.getElementById('media-form'),
-      video = document.getElementById('video')
+      video = document.getElementById('video'),
+      audio = document.getElementById('audio')
 
 const getUserMedia = (ev) => {
   ev.preventDefault()
   const form      = ev.target,
-        setStream = stream => { video.srcObject = stream }
+        setStream = stream => { video.srcObject = stream },
+        setAudioStream = stream => { audio.srcObject = stream }
 
   if (form.reportValidity()) {
     const data = Array.from(form.elements)
@@ -21,8 +23,12 @@ const getUserMedia = (ev) => {
                     })
 
     switch (data.media) {
+      case 'audio':
+        BMD.getAudio()
+          .then(setAudioStream)
+          .catch(console.error)
       case 'video':
-        BMD.getMedia(data.audio)
+        BMD.getVideo(data.audio)
           .then(setStream)
           .catch(console.error)
         break;
